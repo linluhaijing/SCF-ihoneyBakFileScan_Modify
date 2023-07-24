@@ -1,13 +1,18 @@
-# SCF-ihoneyBakFileScan_Modify
-腾讯云函数版-ihoneyBakFileScan_Modify
+#SCF-ihoneyBakFileScan_Modify
 
-一、起因
-之前其实一直不怎么想用扫描器这种工具，因为一扫就被封，换ip又很烦。最近几个月各种攻防一大堆，很多目标存在备份文件的可能性其实挺大的。github存在这么一款工具ihoneyBakFileScan_Modify，这个玩意其实很不错，会自动生成一些字典然后去跑。最近用cs也比较多，也会用到云函数来进行隐匿，所以最后就出现了这个想法，将工具上云函数。
+##一、起因
 
-二、操作详情
+​       之前其实一直不怎么想用扫描器这种工具，因为一扫就被封，换ip又很烦。最近几个月各种攻防一大堆，很多目标存在备份文件的可能性其实挺大的。github存在这么一款工具ihoneyBakFileScan_Modify，这个玩意其实很不错，会自动生成一些字典然后去跑。最近用cs也比较多，也会用到云函数来进行隐匿，所以最后就出现了这个想法，将工具上云函数。
+
+##二、操作详情
+
 创建云函数
 
+![image-20230724164302947](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164302947.png)
+
 输入代码
+
+```
 import requests
 import logging
 import json
@@ -184,19 +189,37 @@ def main_handler(event, context):
             return json.dumps({"error": "[!] Please specify a URL."})
     except Exception as e:
         return {"error": str(e)}
+```
+
 部署可能测试会提示缺少模块，可以将原模版的requirements.txt导入然后进行安装
+
 我建议是cd src然后python3.7 -m pip intsall -r requirements.txt -t . 这样子安装。
+
 点击测试一下，如果出现这样就说明函数没啥问题了。
+
+![image-20230724164338801](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164338801.png)
 
 然后创建触发器
 
+![image-20230724164346988](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164346988.png)
+
 超时时间最好长一点，有的时候会出现扫描时间过长这种情况
 
+![image-20230724164355927](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164355927.png)
+
 然后修改路径为根路径就好了，用其他的也行。
+
+![image-20230724164403453](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164403453.png)
+
 我这边是把集成响应关了，没具体确定要不要开。
 
+![image-20230724164411728](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164411728.png)
+
 然后api测试一下，这样就可以了。
+
 这样可以直接在网站上进行敏感目录扫描，但是这样还是好麻烦，索性写了个本地调用的脚本进行尝试
+
+```
 import datetime
 import json
 import requests
@@ -253,9 +276,18 @@ if __name__ == '__main__':
     else:
         print("未找到包含\"success\"的记录。")
 
+```
+
+
 
 运行方式的话就是
+
 python3 index.py --file url.txt --thread 10
+
 python3 index.py --url http://baidu.com --thread 10
+
 如果存在的话就会创建一个文件
 
+![image-20230724164435490](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164435490.png)
+
+![image-20230724164438390](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164438390.png)
