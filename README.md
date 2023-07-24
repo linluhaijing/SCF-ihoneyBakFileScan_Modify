@@ -8,7 +8,7 @@
 
 创建云函数
 
-![image-20230724164302947](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164302947.png)
+![image-20230724164302947](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164302947.png)
 
 输入代码
 
@@ -197,23 +197,23 @@ def main_handler(event, context):
 
 点击测试一下，如果出现这样就说明函数没啥问题了。
 
-![image-20230724164338801](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164338801.png)
+![image-20230724164338801](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164338801.png)
 
 然后创建触发器
 
-![image-20230724164346988](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164346988.png)
+![image-20230724164346988](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164346988.png)
 
 超时时间最好长一点，有的时候会出现扫描时间过长这种情况
 
-![image-20230724164355927](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164355927.png)
+![image-20230724164355927](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164355927.png)
 
 然后修改路径为根路径就好了，用其他的也行。
 
-![image-20230724164403453](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164403453.png)
+![image-20230724164403453](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164403453.png)
 
 我这边是把集成响应关了，没具体确定要不要开。
 
-![image-20230724164411728](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164411728.png)
+![image-20230724164411728](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164411728.png)
 
 然后api测试一下，这样就可以了。
 
@@ -288,6 +288,6 @@ python3 index.py --url http://baidu.com --thread 10
 
 如果存在的话就会创建一个文件
 
-![image-20230724164435490](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164435490.png)
+![image-20230724164435490](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164435490.png)
 
-![image-20230724164438390](/Users/linlu/Library/Application Support/typora-user-images/image-20230724164438390.png)
+![image-20230724164438390](https://github.com/linluhaijing/SCF-ihoneyBakFileScan_Modify/blob/main/image/image-20230724164438390.png)
